@@ -16,6 +16,21 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".drink.activity.UpdateDrink"
+            android:exported="false" />
+        <activity
+            android:name=".drink.activity.MainDrink"
+            android:exported="false" />
+        <activity
+            android:name=".drink.activity.AddDrink"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".food.activity.UpdateFood"
             android:exported="false" />
         <activity
@@ -26,13 +41,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
