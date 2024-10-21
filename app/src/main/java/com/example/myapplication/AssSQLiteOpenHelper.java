@@ -23,7 +23,7 @@ public class AssSQLiteOpenHelper extends SQLiteOpenHelper {
             "    food_name TEXT NOT NULL,\n" +
             "    description TEXT,\n" +
             "    price REAL NOT NULL,\n" +
-            "    image INTEGER \n" +
+            "    image TEXT \n" +
             ")\n";
     public static final String createDrink = "CREATE TABLE Drink (\n" +
             "    drink_id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
