@@ -52,6 +52,23 @@ public class FoodDao {
         return list;
     }
 
+    public Food getFoodById(int food_id){
+        Food food = new Food();
+        Cursor c = db.query("Food", null, null, null, null, null, null);
+        c.moveToFirst();
+        while (c.isAfterLast() == false){
+            if(c.getInt(0) == food_id){
+                food.setFood_id(c.getInt(0));
+                food.setFood_name(c.getString(1));
+                food.setDescription(c.getString(2));
+                food.setPrice(c.getDouble(3));
+                food.setImage(c.getString(4));
+                break;
+            }
+        }
+        return food;
+    }
+
     public boolean deleteFood(String food_id){
         if(db.delete("Food", "food_id=?", new String[]{food_id}) <= 0){
             return false;

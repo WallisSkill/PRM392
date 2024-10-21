@@ -54,7 +54,9 @@ public class MainFood extends AppCompatActivity implements MainFoodAdapter.FoodI
     @Override
     public void onItemClick(int position) {
         Food food = adapter.getItem(position);
-        Toast.makeText(this, food.getFood_name(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, UpdateFood.class);
+        intent.putExtra("food_id", food.getFood_id());
+        startActivity(intent);
     }
 
     @Override

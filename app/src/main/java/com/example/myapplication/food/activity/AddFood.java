@@ -23,9 +23,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.R;
+import com.example.myapplication.food.dao.FoodDao;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Date;
 
 public class AddFood extends AppCompatActivity {
 
@@ -33,6 +35,7 @@ public class AddFood extends AppCompatActivity {
     private ImageView img;
     private EditText txtName, txtPrice, txtDes;
     private Bitmap bitmapImage;
+    private FoodDao dao;
 
     ActivityResultLauncher<Intent> resultLauncher;
     @Override
@@ -45,6 +48,7 @@ public class AddFood extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        dao = new FoodDao(this);
         btBack = findViewById(R.id.btBack);
         btImagePicker = findViewById(R.id.btSelect);
         btAddFood = findViewById(R.id.btAddFood);
@@ -60,6 +64,43 @@ public class AddFood extends AppCompatActivity {
         btImagePicker.setOnClickListener(view -> {
             Intent intent = new Intent(MediaStore.ACTION_PICK_IMAGES);
             resultLauncher.launch(intent);
+        });
+        btAddFood.setOnClickListener(view -> {
+            String name = txtName.getText().toString().trim();
+            String des = txtDes.getText().toString().trim();
+            Double price = -1d;
+            try {
+                price = Double.parseDouble(txtPrice.getText().toString().trim());
+            }catch (Exception e){
+                Toast.makeText(this, "Enter number for price", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (name.isEmpty()){
+                Toast.makeText(this, "Enter name of food", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (price == -1){
+                Toast.makeText(this, "Enter price of food", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (des.isEmpty()){
+                Toast.makeText(this, "Enter description of food", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if(bitmapImage == null){
+                Toast.makeText(this, "Select image of food", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String imageName = "food_" + new Date().toString()+".jpg";
+            String urlImage = saveImageToInternalStorage(bitmapImage, imageName);
+            if(dao.insertFood(name, des, price, urlImage)){
+                Toast.makeText(this, "Add food successfully", Toast.LENGTH_SHORT).show();
+                txtName.setText("");
+                txtDes.setText("");
+                txtPrice.setText("");
+            }else{
+                Toast.makeText(this, "Add food fail", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -77,5 +118,21 @@ public class AddFood extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private String saveImageToInternalStorage(Bitmap bitmap, String food_name) {
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        File file = new File(directory, food_name);
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return file.getAbsolutePath();
     }
 }
