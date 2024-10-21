@@ -9,14 +9,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User information"
+        android:text="Enter your information"
         android:textSize="25sp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="Username"
         android:textSize="15sp"
         android:textStyle="italic" />
 
@@ -34,10 +34,12 @@
         android:textStyle="italic" />
 
     <EditText
-        android:id="@+id/txtPrice"
+        android:id="@+id/txtPassword"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:inputType="textPassword"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,17 +52,21 @@
         android:id="@+id/txtEmail"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:inputType="textEmailAddress"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phone"
         android:textSize="15sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        />
 
     <EditText
         android:id="@+id/txtPhone"
         android:layout_width="match_parent"
+        android:inputType="number"
         android:layout_height="40dp"
         android:textSize="15sp" />
     <TextView
@@ -90,7 +96,9 @@
             android:id="@+id/btnRegis"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Register"/>
+            android:text="Register"
+            android:layout_marginLeft="175dp"
+            />
 
 
     </LinearLayout>
