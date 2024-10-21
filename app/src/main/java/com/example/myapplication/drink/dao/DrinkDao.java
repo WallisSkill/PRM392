@@ -53,6 +53,23 @@ public class DrinkDao {
         return list;
     }
 
+    public Drink getDrinkById(int drink_id){
+        Drink drink = new Drink();
+        Cursor c = db.query("Drink", null, null, null, null, null, null);
+        c.moveToFirst();
+        while (c.isAfterLast() == false){
+            if(c.getInt(0) == drink_id){
+                drink.setDrink_id(c.getInt(0));
+                drink.setDrink_name(c.getString(1));
+                drink.setDescription(c.getString(2));
+                drink.setPrice(c.getDouble(3));
+                drink.setImage(c.getString(4));
+                break;
+            }
+        }
+        return drink;
+    }
+
     public boolean deleteDrink(String drink_id){
         if(db.delete("Drink", "drink_id=?", new String[]{drink_id}) <= 0){
             return false;
