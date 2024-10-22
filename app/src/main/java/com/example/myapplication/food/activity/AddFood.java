@@ -79,7 +79,7 @@ public class AddFood extends AppCompatActivity {
                 Toast.makeText(this, "Enter name of food", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (price == -1){
+            if (price <= 0){
                 Toast.makeText(this, "Enter price of food", Toast.LENGTH_SHORT).show();
                 return;
             }

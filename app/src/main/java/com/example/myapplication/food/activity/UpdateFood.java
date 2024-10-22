@@ -94,14 +94,13 @@ public class UpdateFood extends AppCompatActivity {
                     Toast.makeText(this, "Enter description of food", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(bitmapImage == null){
-                    Toast.makeText(this, "Select image of food", Toast.LENGTH_SHORT).show();
-                    return;
+                String urlImage = food.getImage();
+                if(bitmapImage != null){
+                    File file = new File(food.getImage()); // Adjust the filename as necessary
+                    file.delete();
+                    String imageName = "food_" + new Date().toString()+".jpg";
+                    urlImage = saveImageToInternalStorage(bitmapImage, imageName);
                 }
-                File file = new File(food.getImage()); // Adjust the filename as necessary
-                file.delete();
-                String imageName = "food_" + new Date().toString()+".jpg";
-                String urlImage = saveImageToInternalStorage(bitmapImage, imageName);
                 if(dao.updateFood(food.getFood_id()+"", name, des, price, urlImage)){
                     Toast.makeText(this, "Update food successfully", Toast.LENGTH_SHORT).show();
                 }else{

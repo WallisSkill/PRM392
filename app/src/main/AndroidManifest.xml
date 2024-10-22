@@ -16,6 +16,15 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".food.activity.SearchFood"
+            android:exported="false" />
+        <activity
+            android:name=".food.activity.DetailFood"
+            android:exported="false" />
+        <activity
+            android:name=".food.activity.MenuFood"
+            android:exported="true" />
+        <activity
             android:name=".food.activity.UpdateFood"
             android:exported="false" />
         <activity
@@ -23,7 +32,7 @@
             android:exported="false" />
         <activity
             android:name=".food.activity.MainFood"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

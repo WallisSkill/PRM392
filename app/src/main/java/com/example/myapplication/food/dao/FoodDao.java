@@ -65,6 +65,7 @@ public class FoodDao {
                 food.setImage(c.getString(4));
                 break;
             }
+            c.moveToNext();
         }
         return food;
     }

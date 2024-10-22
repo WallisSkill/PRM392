@@ -3,8 +3,6 @@ package com.example.myapplication.food.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,57 +14,44 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.food.adapter.MainFoodAdapter;
+import com.example.myapplication.food.adapter.MenuFoodAdapter;
 import com.example.myapplication.food.dao.FoodDao;
 import com.example.myapplication.food.model.Food;
 
 import java.util.List;
 
-public class MainFood extends AppCompatActivity implements MainFoodAdapter.FoodItemListener{
-    private Button btAdd;
-    private ImageView btBack;
+public class MenuFood extends AppCompatActivity implements MenuFoodAdapter.FoodItemListener {
+    private Button btBack;
     private RecyclerView rView;
-    private MainFoodAdapter adapter;
+    private MenuFoodAdapter adapter;
     private FoodDao dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main_food);
+        setContentView(R.layout.activity_menu_food);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        btAdd = findViewById(R.id.btAdd);
-        btBack = findViewById(R.id.btHome);
-        btBack.setOnClickListener(view -> {
-
-        });
+        btBack = findViewById(R.id.btBack);
         rView = findViewById(R.id.rView);
         dao = new FoodDao(this);
         List<Food> mlist = dao.getAll();
-        adapter = new MainFoodAdapter(this, mlist);
+        adapter = new MenuFoodAdapter(this, mlist);
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rView.setLayoutManager(manager);
         rView.setAdapter(adapter);
         adapter.setFoodItemListener(this);
-        btAdd.setOnClickListener(view -> {
-            Intent intent = new Intent(this, AddFood.class);
-            startActivity(intent);
-        });
     }
 
     @Override
     public void onItemClick(int position) {
         Food food = adapter.getItem(position);
-        Intent intent = new Intent(this, UpdateFood.class);
+        Intent intent = new Intent(this, DetailFood.class);
         intent.putExtra("food_id", food.getFood_id());
         startActivity(intent);
-    }
-
-    @Override
-    public void onBtDeleteClick(int food_id) {
-        dao.deleteFood(food_id+"");
     }
 }

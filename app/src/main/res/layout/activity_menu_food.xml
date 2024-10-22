@@ -6,24 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".food.activity.MainFood">
-
+    tools:context=".food.activity.MenuFood">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal">
-        <ImageView
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/baseline_home_40"
-            android:id="@+id/btHome" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="List of food"
+            android:text="Menu food"
             android:textColor="@color/cardview_dark_background"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -31,15 +25,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="right|center_vertical"
+            android:gravity="right"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btAdd"
+                android:id="@+id/btBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginRight="20dp"
-                android:text="Add" />
+                android:text="Back" />
         </LinearLayout>
     </LinearLayout>
 
@@ -47,5 +42,4 @@
         android:id="@+id/rView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
 </LinearLayout>
