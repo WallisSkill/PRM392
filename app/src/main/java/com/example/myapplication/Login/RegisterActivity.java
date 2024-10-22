@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.myapplication.R;
 
 public class RegisterActivity extends AppCompatActivity {
-    private EditText txtName, txtPassword, txtEmail, txtPhone, txtAddress;
+    private EditText txtName, txtPassword, txtEmail, txtPhone, txtAddress, txtConfirmPassword;
     private Button btnBack, btnRegis;
     private UserDao dao;
 
@@ -30,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.txtPassword);
         txtEmail = findViewById(R.id.txtEmail);
         txtPhone = findViewById(R.id.txtPhone);
+        txtConfirmPassword = findViewById(R.id.txtConfirmPassword);
         btnBack = findViewById(R.id.btnBack);
         btnRegis = findViewById(R.id.btnRegis);
 
@@ -46,6 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String username = txtName.getText().toString().trim();
                 String password = txtPassword.getText().toString().trim();
+                String confirmPassword = txtConfirmPassword.getText().toString().trim();
                 String email = txtEmail.getText().toString().trim();
                 String phone = txtPhone.getText().toString().trim();
                 String address = txtAddress.getText().toString().trim();
@@ -60,6 +62,11 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 if (password.isEmpty() || password.length() < 6) {
                     Toast.makeText(view.getContext(), "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (!confirmPassword.equals(password)) {
+                    Toast.makeText(view.getContext(), "Confirm password is wrong", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

@@ -36,4 +36,24 @@ public class UserDao {
         return exists;
     }
 
+    public User loginUser (String username, String password ) {
+        String query = "SELECT * FROM User WHERE username = ? AND password = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{username, password});
+        User user = null;
+        if (cursor.moveToFirst()) {
+            int id = cursor.getInt(cursor.getColumnIndex("id"));
+            String email = cursor.getString(cursor.getColumnIndex("email"));
+            String phone = cursor.getString(cursor.getColumnIndex("phone"));
+            String address = cursor.getString(cursor.getColumnIndex("address"));
+            boolean role = cursor.getInt(cursor.getColumnIndex("role")) > 0;   // Chuyển đổi sang boolean
+
+            user = new User(id, username, password, email, phone, address, role);
+        }
+        cursor.close();
+
+        return user;
+    }
+
+
+
 }
