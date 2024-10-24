@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.R;
 import com.example.myapplication.food.activity.MainFood;
+import com.example.myapplication.food.activity.MenuFood;
 
 public class CustomerHomepageActivity extends AppCompatActivity {
     LinearLayout lnFood, lnDrink, lnDessert;
@@ -32,7 +33,16 @@ public class CustomerHomepageActivity extends AppCompatActivity {
         lnFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i = new Intent(CustomerHomepageActivity.this, MenuFood.class);
+                startActivity(i);
+            }
+        });
 
+        lnDrink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CustomerHomepageActivity.this, MenuFood.class);
+                startActivity(i);
             }
         });
     }
