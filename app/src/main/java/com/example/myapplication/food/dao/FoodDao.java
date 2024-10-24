@@ -13,6 +13,7 @@ import com.example.myapplication.order.model.Order;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class FoodDao {
     private AssSQLiteOpenHelper dbHelper;
@@ -54,19 +55,15 @@ public class FoodDao {
 
     public Food getFoodById(int food_id){
         Food food = new Food();
-        Cursor c = db.query("Food", null, null, null, null, null, null);
-        c.moveToFirst();
-        while (!c.isAfterLast()){
-            if(c.getInt(0) == food_id){
-                food.setFood_id(c.getInt(0));
-                food.setFood_name(c.getString(1));
-                food.setDescription(c.getString(2));
-                food.setPrice(c.getDouble(3));
-                food.setImage(c.getString(4));
-                break;
-            }
-            c.moveToNext();
+        Cursor c = db.query("Food", null, "food_id=?", new String[]{food_id+""}, null, null, null);
+        if(c.moveToFirst()){
+            food.setFood_id(c.getInt(0));
+            food.setFood_name(c.getString(1));
+            food.setDescription(c.getString(2));
+            food.setPrice(c.getDouble(3));
+            food.setImage(c.getString(4));
         }
+        c.close();
         return food;
     }
 
@@ -85,7 +82,7 @@ public class FoodDao {
 
     public Order getCurrentOrder(String user_id){
         Order order = null;
-        String query = "SELECT * from Orders where order_id = ? and status = -1";
+        String query = "SELECT * from Orders where customer_id = ? and status = -1";
         Cursor cursor = db.rawQuery(query, new String[]{user_id});
         if (cursor.moveToFirst()) {
             int id = cursor.getInt(0);
@@ -122,10 +119,34 @@ public class FoodDao {
         value.put("order_date", new Date().toString());
         value.put("total_amount", 0);
         value.put("status", -1);
-        if(db.insert("Order_Detail", null, value) > 0){
+        if(db.insert("Orders", null, value) > 0){
             return getCurrentOrder(customer_id+"");
         }else{
             return null;
         }
+    }
+
+    public List<Food> searchFood(String txtSearch, String filterPrice){
+        List<Food> mlist = new ArrayList<Food>();
+        String query = "Select * from Food where food_name like ? order by price";
+        if(Objects.equals(filterPrice, "Price Up")){
+            query += " asc";
+        }else{
+            query += " desc";
+        }
+        Cursor c = db.rawQuery(query, new String[]{"%"+txtSearch+"%"});
+        c.moveToFirst();
+        while(!c.isAfterLast()){
+            Food product = new Food();
+            product.setFood_id(c.getInt(0));
+            product.setFood_name(c.getString(1));
+            product.setDescription(c.getString(2));
+            product.setPrice(c.getDouble(3));
+            product.setImage(c.getString(4));
+            mlist.add(product);
+            c.moveToNext();
+        }
+        c.close();
+        return mlist;
     }
 }

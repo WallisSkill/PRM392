@@ -54,6 +54,7 @@ public class MenuFoodAdapter extends RecyclerView.Adapter<MenuFoodAdapter.FoodVi
             e.printStackTrace();
         }
         holder.tvName.setText(food.getFood_name());
+        holder.tvPrice.setText(food.getPrice()+"");
     }
 
     @Override
@@ -67,11 +68,12 @@ public class MenuFoodAdapter extends RecyclerView.Adapter<MenuFoodAdapter.FoodVi
 
     public class FoodViewHolder extends RecyclerView.ViewHolder{
         private ImageView img;
-        private TextView tvName;
+        private TextView tvName, tvPrice;
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.imgFood);
             tvName = itemView.findViewById(R.id.tvName);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
             itemView.setOnClickListener(view -> {
                 if(foodItemListener != null){
                     foodItemListener.onItemClick(getAdapterPosition());

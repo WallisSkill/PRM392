@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Homepage.AdminHomepageActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.food.adapter.MainFoodAdapter;
 import com.example.myapplication.food.dao.FoodDao;
@@ -41,7 +42,8 @@ public class MainFood extends AppCompatActivity implements MainFoodAdapter.FoodI
         btAdd = findViewById(R.id.btAdd);
         btBack = findViewById(R.id.btHome);
         btBack.setOnClickListener(view -> {
-
+            Intent intent = new Intent(this, AdminHomepageActivity.class);
+            startActivity(intent);
         });
         rView = findViewById(R.id.rView);
         dao = new FoodDao(this);
