@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = txtEmail.getText().toString().trim();
                 String phone = txtPhone.getText().toString().trim();
                 String address = txtAddress.getText().toString().trim();
-                boolean role = true;
+                boolean role = false;
                 if (username.isEmpty()) {
                     Toast.makeText(view.getContext(), "Username cannot be empty", Toast.LENGTH_SHORT).show();
                     return;

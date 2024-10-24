@@ -1,10 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Homepage.CustomerHomepageActivity">
+    tools:context=".Homepage.AdminHomepageActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="10dp"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/lnFood"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        >
+        <ImageView
+
+            android:src="@drawable/baseline_fastfood_24"
+            android:id="@+id/ivItem1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Foods"
+            android:textSize="24dp"
+            android:gravity="center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/lnDrink"
+        >
+
+        <ImageView
+            android:src="@drawable/baseline_coffee_24"
+            android:id="@+id/ivItem2"
+
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Foods"
+            android:textSize="24dp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/lnDessert"
+
+        >
+
+        <ImageView
+            android:src="@drawable/baseline_cake_24"
+            android:id="@+id/ivItem3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dessert"
+            android:textSize="24dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
