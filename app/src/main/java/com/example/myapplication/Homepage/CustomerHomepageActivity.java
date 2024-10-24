@@ -1,8 +1,10 @@
 package com.example.myapplication.Homepage;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -11,12 +13,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.myapplication.Login.LoginActivity;
+import com.example.myapplication.Login.ViewProfileActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.food.activity.MainFood;
 import com.example.myapplication.food.activity.MenuFood;
 
 public class CustomerHomepageActivity extends AppCompatActivity {
     LinearLayout lnFood, lnDrink, lnDessert;
+    Button btnLogout, btnProfile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,20 +35,35 @@ public class CustomerHomepageActivity extends AppCompatActivity {
         lnFood = findViewById(R.id.lnFood);
         lnDrink = findViewById(R.id.lnDrink);
         lnDessert = findViewById(R.id.lnDessert);
-        lnFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(CustomerHomepageActivity.this, MenuFood.class);
-                startActivity(i);
-            }
+        btnLogout = findViewById(R.id.btnLogout);
+        btnProfile = findViewById(R.id.btnProfile);
+        lnFood.setOnClickListener(view -> {
+            Intent i = new Intent(CustomerHomepageActivity.this, MenuFood.class);
+            startActivity(i);
         });
 
-        lnDrink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(CustomerHomepageActivity.this, MenuFood.class);
-                startActivity(i);
-            }
+        lnDrink.setOnClickListener(view -> {
+            Intent i = new Intent(CustomerHomepageActivity.this, MenuFood.class);
+            startActivity(i);
+        });
+        btnLogout.setOnClickListener(view -> {
+            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+            editor.remove("id");
+            editor.remove("username");
+            editor.remove("email");
+            editor.remove("phone");
+            editor.remove("address");
+            editor.remove("role");
+            editor.apply();
+
+            Intent i = new Intent(CustomerHomepageActivity.this, LoginActivity.class);
+            startActivity(i);
+        });
+        btnProfile.setOnClickListener(view -> {
+            Intent i = new Intent(CustomerHomepageActivity.this, ViewProfileActivity.class);
+            startActivity(i);
         });
     }
 }
