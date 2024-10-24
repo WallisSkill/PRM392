@@ -98,6 +98,8 @@ public class AddFood extends AppCompatActivity {
                 txtName.setText("");
                 txtDes.setText("");
                 txtPrice.setText("");
+                bitmapImage = null;
+                img.setImageResource(R.drawable.food);
             }else{
                 Toast.makeText(this, "Add food fail", Toast.LENGTH_SHORT).show();
             }
