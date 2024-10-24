@@ -80,7 +80,7 @@ public class AddFood extends AppCompatActivity {
                 return;
             }
             if (price <= 0){
-                Toast.makeText(this, "Enter price of food", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Enter positive number for price", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (des.isEmpty()){
