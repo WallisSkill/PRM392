@@ -2,9 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="20dp"
-    >
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,9 +36,8 @@
         android:id="@+id/txtPassword"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:textSize="15sp"
         android:inputType="textPassword"
-        />
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,9 +50,8 @@
         android:id="@+id/txtConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:textSize="15sp"
         android:inputType="textPassword"
-        />
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,23 +64,23 @@
         android:id="@+id/txtEmail"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:textSize="15sp"
         android:inputType="textEmailAddress"
-        />
+        android:textSize="15sp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phone"
         android:textSize="15sp"
-        android:textStyle="italic"
-        />
+        android:textStyle="italic" />
 
     <EditText
         android:id="@+id/txtPhone"
         android:layout_width="match_parent"
-        android:inputType="number"
         android:layout_height="40dp"
+        android:inputType="number"
         android:textSize="15sp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -100,20 +97,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back"/>
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-        <Button
-            android:id="@+id/btnRegis"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register"
-            android:layout_marginLeft="175dp"
-            />
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnRegis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register" />
+        </LinearLayout>
 
 
     </LinearLayout>
