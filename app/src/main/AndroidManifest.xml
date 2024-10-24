@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Login.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".Login.ViewProfileActivity"
             android:exported="false" />
         <activity
@@ -32,6 +35,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -43,9 +47,6 @@
             android:exported="false" />
         <activity
             android:name=".drink.activity.AddDrink"
-            android:exported="false" />
-        <activity
-            android:name=".food.activity.SearchFood"
             android:exported="false" />
         <activity
             android:name=".food.activity.DetailFood"
