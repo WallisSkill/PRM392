@@ -13,6 +13,7 @@ import com.example.myapplication.order.model.Order;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class DrinkDao {
     private AssSQLiteOpenHelper dbHelper;
@@ -127,5 +128,29 @@ public class DrinkDao {
         }else{
             return null;
         }
+    }
+
+    public List<Drink> searchDrink(String txtSearch, String filterPrice){
+        List<Drink> mlist = new ArrayList<Drink>();
+        String query = "Select * from Drink where drink_name like ? order by price";
+        if(Objects.equals(filterPrice, "Price Up")){
+            query += " asc";
+        }else{
+            query += " desc";
+        }
+        Cursor c = db.rawQuery(query, new String[]{"%"+txtSearch+"%"});
+        c.moveToFirst();
+        while(!c.isAfterLast()){
+            Drink product = new Drink();
+            product.setDrink_id(c.getInt(0));
+            product.setDrink_name(c.getString(1));
+            product.setDescription(c.getString(2));
+            product.setPrice(c.getDouble(3));
+            product.setImage(c.getString(4));
+            mlist.add(product);
+            c.moveToNext();
+        }
+        c.close();
+        return mlist;
     }
 }

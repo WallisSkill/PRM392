@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Homepage.AdminHomepageActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.drink.adapter.MainDrinkAdapter;
 import com.example.myapplication.drink.dao.DrinkDao;
@@ -45,7 +46,8 @@ public class MainDrink extends AppCompatActivity implements MainDrinkAdapter.Dri
         btAdd = findViewById(R.id.btAdd);
         btBack = findViewById(R.id.btHome);
         btBack.setOnClickListener(view -> {
-
+            Intent intent = new Intent(this, AdminHomepageActivity.class);
+            startActivity(intent);
         });
         rView = findViewById(R.id.rView);
         dao = new DrinkDao(this);
