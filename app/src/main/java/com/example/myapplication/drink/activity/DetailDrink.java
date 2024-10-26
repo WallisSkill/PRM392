@@ -82,7 +82,7 @@ public class DetailDrink extends AppCompatActivity {
                         Order order = dao.getCurrentOrder(user_id + "");
                         if (order != null) {
                             if (dao.updateOrder(order.getOrder_id(), order.getTotal_amount() + drink.getPrice() * quan)
-                                    || dao.insertOrderDetail(order.getOrder_id(), drink.getDrink_id(), "Drink", quan, drink.getPrice())) {
+                                    && dao.insertOrderDetail(order.getOrder_id(), drink.getDrink_id(), "Drink", quan, drink.getPrice())) {
                                 Toast.makeText(this, "Add to cart successfully", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(this, "Add to cart fail", Toast.LENGTH_SHORT).show();
@@ -91,7 +91,7 @@ public class DetailDrink extends AppCompatActivity {
                             Order newOrder = dao.insertOrder(user_id);
                             if (newOrder != null) {
                                 if (dao.updateOrder(newOrder.getOrder_id(), newOrder.getTotal_amount() + drink.getPrice() * quan)
-                                        || dao.insertOrderDetail(newOrder.getOrder_id(), drink.getDrink_id(), "Drink", quan, drink.getPrice())) {
+                                        && dao.insertOrderDetail(newOrder.getOrder_id(), drink.getDrink_id(), "Drink", quan, drink.getPrice())) {
                                     Toast.makeText(this, "Add to cart successfully", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(this, "Add to cart fail", Toast.LENGTH_SHORT).show();

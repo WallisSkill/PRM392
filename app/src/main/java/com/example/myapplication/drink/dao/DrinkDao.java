@@ -94,7 +94,7 @@ public class DrinkDao {
             Double total_amount = cursor.getDouble(3);
             int status = cursor.getInt(4);
 
-            order = new Order(id, order_date ,customer_id, status, total_amount);
+            order = new Order(customer_id, order_date, id, status, total_amount);
         }
         cursor.close();
         return order;

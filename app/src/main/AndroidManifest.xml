@@ -16,13 +16,12 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
             android:name=".Login.ResetPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".Login.ViewProfileActivity"
             android:exported="false" />
-=======
+        <activity
             android:name=".drink.activity.DetailDrink"
             android:exported="false" />
         <activity
@@ -34,7 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
->>>>>>> b4485a8 (implementing drink...)
         <activity
             android:name=".Homepage.AdminHomepageActivity"
             android:exported="false" />
@@ -46,7 +44,6 @@
             android:exported="false" />
         <activity
             android:name=".Login.LoginActivity"
-<<<<<<< HEAD
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,9 +51,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-=======
-            android:exported="true"></activity>
->>>>>>> b4485a8 (implementing drink...)
         <activity
             android:name=".drink.activity.UpdateDrink"
             android:exported="false" />
