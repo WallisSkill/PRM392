@@ -64,7 +64,6 @@ public class UpdateDrink extends AppCompatActivity {
         dao = new DrinkDao(this);
         Intent intent = getIntent();
         setResultLauncher();
-
         if (intent != null) {
             int drink_id = intent.getIntExtra("drink_id", 0);
             Drink drink = dao.getDrinkById(drink_id);
@@ -92,22 +91,21 @@ public class UpdateDrink extends AppCompatActivity {
                     Toast.makeText(this, "Enter name of drink", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (price == -1) {
-                    Toast.makeText(this, "Enter price of drink", Toast.LENGTH_SHORT).show();
+                if (price <= 0) {
+                    Toast.makeText(this, "Enter positive number for price", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (des.isEmpty()) {
                     Toast.makeText(this, "Enter description of drink", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (bitmapImage == null) {
-                    Toast.makeText(this, "Select image of drink", Toast.LENGTH_SHORT).show();
-                    return;
+                String urlImage = drink.getImage();
+                if (bitmapImage != null) {
+                    File file = new File(drink.getImage()); // Adjust the filename as necessary
+                    file.delete();
+                    String imageName = "food_" + new Date().toString() + ".jpg";
+                    urlImage = saveImageToInternalStorage(bitmapImage, imageName);
                 }
-                File file = new File(drink.getImage()); // Adjust the filename as necessary
-                file.delete();
-                String imageName = "food_" + new Date().toString() + ".jpg";
-                String urlImage = saveImageToInternalStorage(bitmapImage, imageName);
                 if (dao.updateDrink(drink.getDrink_id() + "", name, des, price, urlImage)) {
                     Toast.makeText(this, "Update food successfully", Toast.LENGTH_SHORT).show();
                 } else {

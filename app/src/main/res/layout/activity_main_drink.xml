@@ -13,12 +13,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/baseline_home_40"
+            android:id="@+id/btHome" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="List of drink"
             android:layout_margin="10dp"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@color/cardview_dark_background"/>
 
@@ -26,7 +32,8 @@
             android:id="@+id/btAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add new drink"
+            android:text="Add"
+            android:paddingHorizontal="4dp"
             android:layout_marginLeft="80dp"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
