@@ -14,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.dessert.model.Dessert;
-import com.example.myapplication.drink.adapter.MenuDrinkAdapter;
-import com.example.myapplication.drink.model.Drink;
+
 
 
 import java.io.File;
@@ -72,7 +71,7 @@ public class MenuDessertAdapter extends RecyclerView.Adapter<MenuDessertAdapter.
 
         public DessertViewHolder(@NonNull View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.imgDrink);
+            img = itemView.findViewById(R.id.imgDessert);
             tvName = itemView.findViewById(R.id.tvName);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             itemView.setOnClickListener(view -> {

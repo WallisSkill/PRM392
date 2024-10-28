@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.dessert.model.Dessert;
-import com.example.myapplication.drink.model.Drink;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -82,7 +82,7 @@ public class MainDessertAdapter extends RecyclerView.Adapter<MainDessertAdapter.
         private Button btDelete;
         public DessertViewHolder(@NonNull View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.imgDrink);
+            img = itemView.findViewById(R.id.imgDessert);
             tvName = itemView.findViewById(R.id.tvName);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             btDelete = itemView.findViewById(R.id.btDelete);
@@ -98,6 +98,6 @@ public class MainDessertAdapter extends RecyclerView.Adapter<MainDessertAdapter.
 
     public interface DessertItemListener{
         void onItemClick(int position);
-        void onBtDeleteClick(int drink_id);
+        void onBtDeleteClick(int dessert_id);
     }
 }
