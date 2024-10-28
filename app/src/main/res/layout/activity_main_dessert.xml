@@ -7,34 +7,45 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".dessert.activity.MainDessert">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <ImageView
+            android:id="@+id/btHome"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_margin="10dp"
-            android:src="@drawable/baseline_home_40"
-            android:id="@+id/btHome" />
+            android:src="@drawable/baseline_home_40" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="List of dessert"
             android:layout_margin="10dp"
+            android:text="List of dessert"
+            android:textColor="@color/cardview_dark_background"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:textColor="@color/cardview_dark_background"/>
+            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btAdd"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add"
-            android:paddingHorizontal="4dp"
-            android:layout_marginLeft="80dp"/>
+            android:gravity="center|right"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="Add" />
+        </LinearLayout>
+
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rView"
         android:layout_width="match_parent"
