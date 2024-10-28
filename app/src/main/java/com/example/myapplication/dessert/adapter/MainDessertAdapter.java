@@ -58,6 +58,7 @@ public class MainDessertAdapter extends RecyclerView.Adapter<MainDessertAdapter.
         }catch (Exception e){
             e.printStackTrace();
         }
+        String name = dessert.getDessert_name();
         holder.tvName.setText(dessert.getDessert_name());
         holder.tvPrice.setText(dessert.getPrice()+"");
         holder.btDelete.setOnClickListener(view -> {
