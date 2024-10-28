@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.myapplication.Login.LoginActivity;
 import com.example.myapplication.Login.ViewProfileActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.dessert.activity.MainDessert;
 import com.example.myapplication.drink.activity.MainDrink;
 import com.example.myapplication.food.activity.MainFood;
 
@@ -50,6 +51,12 @@ public class AdminHomepageActivity extends AppCompatActivity {
 
         lnDrink.setOnClickListener(view -> {
             Intent i = new Intent(AdminHomepageActivity.this, MainDrink.class);
+            startActivity(i);
+        });
+
+        lnDessert.setOnClickListener(view -> {
+
+            Intent i = new Intent(this, MainDessert.class);
             startActivity(i);
         });
 

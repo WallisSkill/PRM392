@@ -16,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.myapplication.Login.LoginActivity;
 import com.example.myapplication.Login.ViewProfileActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.dessert.activity.MainDessert;
+import com.example.myapplication.drink.activity.MenuDrink;
 import com.example.myapplication.food.activity.MenuFood;
 
 public class CustomerHomepageActivity extends AppCompatActivity {
@@ -43,9 +45,15 @@ public class CustomerHomepageActivity extends AppCompatActivity {
         });
 
         lnDrink.setOnClickListener(view -> {
-            Intent i = new Intent(CustomerHomepageActivity.this, MenuFood.class);
+            Intent i = new Intent(CustomerHomepageActivity.this, MenuDrink.class);
             startActivity(i);
         });
+        lnDessert.setOnClickListener(view -> {
+
+            Intent i = new Intent(this, MainDessert.class);
+            startActivity(i);
+        });
+
         btnLogout.setOnClickListener(view -> {
             SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
