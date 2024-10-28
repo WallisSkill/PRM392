@@ -17,6 +17,7 @@ import com.example.myapplication.Login.LoginActivity;
 import com.example.myapplication.Login.ViewProfileActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.dessert.activity.MainDessert;
+import com.example.myapplication.dessert.activity.MenuDessert;
 import com.example.myapplication.drink.activity.MenuDrink;
 import com.example.myapplication.food.activity.MenuFood;
 
@@ -50,7 +51,7 @@ public class CustomerHomepageActivity extends AppCompatActivity {
         });
         lnDessert.setOnClickListener(view -> {
 
-            Intent i = new Intent(this, MainDessert.class);
+            Intent i = new Intent(this, MenuDessert.class);
             startActivity(i);
         });
 
