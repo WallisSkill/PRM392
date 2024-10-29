@@ -58,7 +58,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 Toast.makeText(this, "Mật khẩu mới không khớp!", Toast.LENGTH_SHORT).show();
                 return;
             }
-hoang
             if (dao.checkCurrentPassword(userId, currentPass)) {
                 if (dao.updatePassword(userId, newPass)) {
                     Toast.makeText(this, "Thay đổi mật khẩu thành công!", Toast.LENGTH_SHORT).show();
