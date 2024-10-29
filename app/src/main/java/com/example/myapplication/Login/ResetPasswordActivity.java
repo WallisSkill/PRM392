@@ -50,12 +50,15 @@ public class ResetPasswordActivity extends AppCompatActivity {
             SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
             int userId = sharedPreferences.getInt("id", -1);
 
-
+            if (newPass.length() < 6) {
+                Toast.makeText(this, "Mật khẩu mới phải có ít nhất 6 ký tự!", Toast.LENGTH_SHORT).show();
+                return;
+            }
             if (!newPass.equals(confirmPass)) {
                 Toast.makeText(this, "Mật khẩu mới không khớp!", Toast.LENGTH_SHORT).show();
                 return;
             }
-
+hoang
             if (dao.checkCurrentPassword(userId, currentPass)) {
                 if (dao.updatePassword(userId, newPass)) {
                     Toast.makeText(this, "Thay đổi mật khẩu thành công!", Toast.LENGTH_SHORT).show();
