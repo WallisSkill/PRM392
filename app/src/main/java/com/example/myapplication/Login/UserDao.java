@@ -54,6 +54,21 @@ public class UserDao {
         return user;
     }
 
+    public boolean checkCurrentPassword (int id, String password) {
+        String query = "SELECT * FROM User WHERE id = ? AND password = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(id), password});
+        boolean isValid = cursor.getCount() > 0;
+        cursor.close();
+        return isValid;
+    }
+
+    public boolean updatePassword(int id, String newPassword) {
+        ContentValues values = new ContentValues();
+        values.put("password", newPassword);
+        int rows = db.update("User", values, "id = ?", new String[]{String.valueOf(id)});
+        return rows > 0;
+    }
+
 
 
 }
