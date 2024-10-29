@@ -1,4 +1,4 @@
-package com.example.myapplication.drink.activity;
+package com.example.myapplication.dessert.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,29 +15,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Homepage.AdminHomepageActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.drink.adapter.MainDrinkAdapter;
-import com.example.myapplication.drink.dao.DrinkDao;
+import com.example.myapplication.dessert.adapter.MainDessertAdapter;
+import com.example.myapplication.dessert.dao.DessertDao;
+import com.example.myapplication.dessert.model.Dessert;
+import com.example.myapplication.drink.activity.UpdateDrink;
 import com.example.myapplication.drink.model.Drink;
-import com.example.myapplication.food.activity.AddFood;
-import com.example.myapplication.food.activity.UpdateFood;
-import com.example.myapplication.food.adapter.MainFoodAdapter;
-import com.example.myapplication.food.dao.FoodDao;
-import com.example.myapplication.food.model.Food;
+
 
 import java.util.List;
 
-public class MainDrink extends AppCompatActivity implements MainDrinkAdapter.DrinkItemListener {
+public class MainDessert extends AppCompatActivity implements MainDessertAdapter.DessertItemListener {
     private Button btAdd;
     private ImageView btBack;
     private RecyclerView rView;
-    private MainDrinkAdapter adapter;
-    private DrinkDao dao;
+    private MainDessertAdapter adapter;
+    private DessertDao dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main_drink);
+        setContentView(R.layout.activity_main_dessert);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -50,29 +48,29 @@ public class MainDrink extends AppCompatActivity implements MainDrinkAdapter.Dri
             startActivity(intent);
         });
         rView = findViewById(R.id.rView);
-        dao = new DrinkDao(this);
-        List<Drink> mlist = dao.getAll();
-        adapter = new MainDrinkAdapter(this, mlist);
+        dao = new DessertDao(this);
+        List<Dessert> mlist = dao.getAll();
+        adapter = new MainDessertAdapter(this, mlist);
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rView.setLayoutManager(manager);
         rView.setAdapter(adapter);
-        adapter.setDrinkItemListener(this);
+        adapter.setDessertItemListener(this);
         btAdd.setOnClickListener(view -> {
-            Intent intent = new Intent(this, AddDrink.class);
+            Intent intent = new Intent(this, AddDessert.class);
             startActivity(intent);
         });
     }
 
     @Override
     public void onItemClick(int position) {
-        Drink drink = adapter.getItem(position);
-        Intent intent = new Intent(this, UpdateDrink.class);
-        intent.putExtra("drink_id", drink.getDrink_id());
+        Dessert dessert = adapter.getItem(position);
+        Intent intent = new Intent(this, UpdateActivity.class);
+        intent.putExtra("dessert_id", dessert.getDessert_id());
         startActivity(intent);
     }
 
     @Override
-    public void onBtDeleteClick(int drink_id) {
-        dao.deleteDrink(drink_id + "");
+    public void onBtDeleteClick(int dessert_id) {
+        dao.deleteDessert(dessert_id + "");
     }
 }

@@ -16,6 +16,21 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".dessert.activity.DetailDessert"
+            android:exported="false" />
+        <activity
+            android:name=".dessert.activity.MenuDessert"
+            android:exported="false" />
+        <activity
+            android:name=".dessert.activity.UpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dessert.activity.MainDessert"
+            android:exported="false" />
+        <activity
+            android:name=".dessert.activity.AddDessert"
+            android:exported="false" />
+        <activity
             android:name=".Login.ResetPasswordActivity"
             android:exported="false" />
         <activity
@@ -27,7 +42,6 @@
         <activity
             android:name=".drink.activity.MenuDrink"
             android:exported="false">
-
         </activity>
         <activity
             android:name=".Homepage.AdminHomepageActivity"
@@ -55,6 +69,8 @@
             android:exported="false">
 
         </activity>
+
+            android:exported="true" />
         <activity
             android:name=".drink.activity.AddDrink"
             android:exported="false" />

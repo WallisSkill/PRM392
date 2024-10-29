@@ -1,4 +1,4 @@
-package com.example.myapplication.drink.dao;
+package com.example.myapplication.dessert.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,8 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.myapplication.AssSQLiteOpenHelper;
-import com.example.myapplication.drink.model.Drink;
-import com.example.myapplication.food.model.Food;
+import com.example.myapplication.dessert.model.Dessert;
 import com.example.myapplication.order.model.Order;
 
 import java.util.ArrayList;
@@ -15,34 +14,32 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class DrinkDao {
+public class DessertDao {
     private AssSQLiteOpenHelper dbHelper;
     private SQLiteDatabase db;
     private Context context;
 
-    public DrinkDao(Context context) {
+    public DessertDao(Context context) {
         this.context = context;
         dbHelper = new AssSQLiteOpenHelper(context);
         db = dbHelper.getWritableDatabase();
     }
-
-    public boolean insertDrink(String name, String description, double price, String image){
+    public boolean insertDessert(String name, String description, double price, String image){
         ContentValues value = new ContentValues();
-        value.put("drink_name", name);
+        value.put("dessert_name", name);
         value.put("description", description);
         value.put("price", price);
         value.put("image", image);
-        return db.insert("Drink", null, value) > 0;
+        return db.insert("Dessert", null, value) > 0;
     }
-
-    public List<Drink> getAll(){
-        List<Drink> list = new ArrayList<>();
-        Cursor c = db.query("Drink", null, null, null, null, null, null);
+    public List<Dessert> getAll(){
+        List<Dessert> list = new ArrayList<>();
+        Cursor c = db.query("Dessert", null, null, null, null, null, null);
         c.moveToFirst();
         while(!c.isAfterLast()){
-            Drink product = new Drink();
-            product.setDrink_id(c.getInt(0));
-            product.setDrink_name(c.getString(1));
+            Dessert product = new Dessert();
+            product.setDessert_id(c.getInt(0));
+            product.setDessert_name(c.getString(1));
             product.setDescription(c.getString(2));
             product.setPrice(c.getDouble(3));
             product.setImage(c.getString(4));
@@ -52,36 +49,35 @@ public class DrinkDao {
         c.close();
         return list;
     }
-
-    public Drink getDrinkById(int drink_id){
-        Drink drink = new Drink();
-        Cursor c = db.query("Drink", null, null, null, null, null, null);
+    public Dessert getDessertById(int dessert_id){
+        Dessert dessert = new Dessert();
+        Cursor c = db.query("Dessert", null, null, null, null, null, null);
         c.moveToFirst();
         while(!c.isAfterLast()){
-            if(c.getInt(0) == drink_id){
-                drink.setDrink_id(c.getInt(0));
-                drink.setDrink_name(c.getString(1));
-                drink.setDescription(c.getString(2));
-                drink.setPrice(c.getDouble(3));
-                drink.setImage(c.getString(4));
+            if(c.getInt(0) == dessert_id){
+                dessert.setDessert_id(c.getInt(0));
+                dessert.setDessert_name(c.getString(1));
+                dessert.setDescription(c.getString(2));
+                dessert.setPrice(c.getDouble(3));
+                dessert.setImage(c.getString(4));
                 break;
             }
             c.moveToNext();
         }
-        return drink;
+        return dessert;
     }
 
-    public boolean deleteDrink(String drink_id){
-        return db.delete("Drink", "drink_id=?", new String[]{drink_id}) > 0;
+    public boolean deleteDessert(String dessert_id){
+        return db.delete("Dessert", "dessert_id=?", new String[]{dessert_id}) > 0;
     }
 
-    public boolean updateDrink(String drink_id, String name, String description, double price, String image){
+    public boolean updateDessert(String dessert_id, String name, String description, double price, String image){
         ContentValues value = new ContentValues();
-        value.put("drink_name", name);
+        value.put("dessert_name", name);
         value.put("description", description);
         value.put("price", price);
         value.put("image", image);
-        return db.update("Drink", value, "drink_id=?", new String[]{drink_id}) > 0;
+        return db.update("Dessert", value, "dessert_id=?", new String[]{dessert_id}) > 0;
     }
 
     public Order getCurrentOrder(String user_id){
@@ -130,9 +126,9 @@ public class DrinkDao {
         }
     }
 
-    public List<Drink> searchDrink(String txtSearch, String filterPrice){
-        List<Drink> mlist = new ArrayList<Drink>();
-        String query = "Select * from Drink where drink_name like ? order by price";
+    public List<Dessert> searchDessert(String txtSearch, String filterPrice){
+        List<Dessert> mlist = new ArrayList<Dessert>();
+        String query = "Select * from Dessert where dessert_name like ? order by price";
         if(Objects.equals(filterPrice, "Price Up")){
             query += " asc";
         }else{
@@ -141,9 +137,9 @@ public class DrinkDao {
         Cursor c = db.rawQuery(query, new String[]{"%"+txtSearch+"%"});
         c.moveToFirst();
         while(!c.isAfterLast()){
-            Drink product = new Drink();
-            product.setDrink_id(c.getInt(0));
-            product.setDrink_name(c.getString(1));
+            Dessert product = new Dessert();
+            product.setDessert_id(c.getInt(0));
+            product.setDessert_name(c.getString(1));
             product.setDescription(c.getString(2));
             product.setPrice(c.getDouble(3));
             product.setImage(c.getString(4));

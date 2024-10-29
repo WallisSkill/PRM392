@@ -54,6 +54,7 @@ public class MenuDrinkAdapter extends RecyclerView.Adapter<MenuDrinkAdapter.Drin
             e.printStackTrace();
         }
         holder.tvName.setText(drink.getDrink_name());
+        holder.tvPrice.setText(drink.getPrice() + "");
     }
 
     @Override
@@ -67,12 +68,13 @@ public class MenuDrinkAdapter extends RecyclerView.Adapter<MenuDrinkAdapter.Drin
 
     public class DrinkViewHolder extends RecyclerView.ViewHolder {
         private ImageView img;
-        private TextView tvName;
+        private TextView tvName, tvPrice;
 
         public DrinkViewHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.imgDrink);
             tvName = itemView.findViewById(R.id.tvName);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
             itemView.setOnClickListener(view -> {
                 if (drinkItemListener != null) {
                     drinkItemListener.onItemClick(getAdapterPosition());

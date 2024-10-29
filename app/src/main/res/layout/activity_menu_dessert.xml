@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".drink.activity.MenuDrink">
-
+    tools:context=".dessert.activity.MenuDessert">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Menu drink"
+            android:text="Menu dessert"
             android:textColor="@color/cardview_dark_background"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -43,7 +42,7 @@
         android:id="@+id/txtSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter drink" />
+        android:hint="Enter dessert" />
 
     <LinearLayout
         android:layout_width="match_parent"
