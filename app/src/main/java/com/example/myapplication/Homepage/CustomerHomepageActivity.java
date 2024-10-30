@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -20,11 +21,12 @@ import com.example.myapplication.dessert.activity.MainDessert;
 import com.example.myapplication.dessert.activity.MenuDessert;
 import com.example.myapplication.drink.activity.MenuDrink;
 import com.example.myapplication.food.activity.MenuFood;
+import com.example.myapplication.order.activity.Cart;
 
 public class CustomerHomepageActivity extends AppCompatActivity {
     LinearLayout lnFood, lnDrink, lnDessert;
     Button btnLogout, btnProfile;
-
+    ImageView cartBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,12 @@ public class CustomerHomepageActivity extends AppCompatActivity {
         lnDessert.setOnClickListener(view -> {
 
             Intent i = new Intent(this, MenuDessert.class);
+            startActivity(i);
+        });
+
+        cartBtn = findViewById(R.id.ivCart);
+        cartBtn.setOnClickListener(view -> {
+            Intent i = new Intent(CustomerHomepageActivity.this, Cart.class);
             startActivity(i);
         });
 

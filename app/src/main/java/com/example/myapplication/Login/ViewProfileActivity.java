@@ -19,7 +19,7 @@ import com.example.myapplication.R;
 
 public class ViewProfileActivity extends AppCompatActivity {
     TextView txtName, txtEmail, txtPhone, txtAddress;
-    Button btnBack, btnResetPass;
+    Button btnBack, btnResetPass, btnChangeProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class ViewProfileActivity extends AppCompatActivity {
         txtPhone = findViewById(R.id.txtPhone);
         btnBack = findViewById(R.id.btnBack);
         btnResetPass = findViewById(R.id.btnResetPass);
+        btnChangeProfile = findViewById(R.id.btnChangeProfile);
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         int userId = sharedPreferences.getInt("id", -1);
         String username = sharedPreferences.getString("username", null);
@@ -66,7 +67,9 @@ public class ViewProfileActivity extends AppCompatActivity {
             startActivity(i);
         });
 
-
-
+        btnChangeProfile.setOnClickListener(v -> {
+            Intent i = new Intent(this, ChangeProfileActivity.class);
+            startActivity(i);
+        });
     }
 }

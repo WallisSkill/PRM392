@@ -91,7 +91,7 @@ public class DrinkDao {
         if (cursor.moveToFirst()) {
             int id = cursor.getInt(0);
             int customer_id = cursor.getInt(1);
-            String order_date = cursor.getString(2);
+            Date order_date = new Date(cursor.getString(2));
             Double total_amount = cursor.getDouble(3);
             int status = cursor.getInt(4);
 

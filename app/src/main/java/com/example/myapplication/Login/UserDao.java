@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.myapplication.AssSQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserDao {
     private AssSQLiteOpenHelper dbHelper;
     private SQLiteDatabase db;
@@ -27,6 +30,16 @@ public class UserDao {
         value.put("address", address);
         value.put("role", role);
         return db.insert("User", null, value) > 0;
+    }
+
+    public boolean updateProfile(int id, String email, String phone, String address) {
+        ContentValues values = new ContentValues();
+        values.put("email", email);
+        values.put("phone", phone);
+        values.put("address", address);
+
+        int rows = db.update("User", values, "id = ?", new String[]{String.valueOf(id)});
+        return rows > 0;
     }
 
     public boolean checkUsernameExists(String username) {
@@ -67,6 +80,25 @@ public class UserDao {
         values.put("password", newPassword);
         int rows = db.update("User", values, "id = ?", new String[]{String.valueOf(id)});
         return rows > 0;
+    }
+
+    public User getUserById(int id) {
+        List<String> args = new ArrayList<>();
+        args.add(String.valueOf(id));
+        String query = "SELECT * FROM User WHERE id = ?";
+        Cursor cursor = db.rawQuery(query, args.toArray(new String[0]));
+        User user = null;
+        if (cursor.moveToFirst()) {
+            int userid = cursor.getInt(0);
+            String username = cursor.getString(1);
+            String email = cursor.getString(3);
+            String phone = cursor.getString(4);
+            String address = cursor.getString(5);
+            boolean role = cursor.getInt(6) > 0;
+
+            user = new User(userid, username, null, email, phone, address, role);
+        }
+        return user;
     }
 
 

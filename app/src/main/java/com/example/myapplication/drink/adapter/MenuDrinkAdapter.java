@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.drink.model.Drink;
-import com.example.myapplication.food.adapter.MenuFoodAdapter;
-import com.example.myapplication.food.model.Food;
 
 import java.io.File;
 import java.io.FileInputStream;

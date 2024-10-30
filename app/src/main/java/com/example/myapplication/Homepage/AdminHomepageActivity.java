@@ -19,9 +19,10 @@ import com.example.myapplication.R;
 import com.example.myapplication.dessert.activity.MainDessert;
 import com.example.myapplication.drink.activity.MainDrink;
 import com.example.myapplication.food.activity.MainFood;
+import com.example.myapplication.order.activity.MainOrderHistory;
 
 public class AdminHomepageActivity extends AppCompatActivity {
-    LinearLayout lnFood, lnDrink, lnDessert;
+    LinearLayout lnFood, lnDrink, lnDessert,lnCart;
     Button btnLogout, btnProfile;
 
 
@@ -40,6 +41,7 @@ public class AdminHomepageActivity extends AppCompatActivity {
         lnFood = findViewById(R.id.lnFood);
         lnDrink = findViewById(R.id.lnDrink);
         lnDessert = findViewById(R.id.lnDessert);
+        lnCart = findViewById(R.id.lnCart);
         btnLogout = findViewById(R.id.btnLogout);
         btnProfile = findViewById(R.id.btnProfile);
 
@@ -57,6 +59,11 @@ public class AdminHomepageActivity extends AppCompatActivity {
         lnDessert.setOnClickListener(view -> {
 
             Intent i = new Intent(this, MainDessert.class);
+            startActivity(i);
+        });
+
+        lnCart.setOnClickListener(view -> {
+            Intent i = new Intent(this, MainOrderHistory.class);
             startActivity(i);
         });
 
