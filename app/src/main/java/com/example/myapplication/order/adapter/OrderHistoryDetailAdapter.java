@@ -70,7 +70,7 @@ public class OrderHistoryDetailAdapter extends RecyclerView.Adapter<OrderHistory
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.imgDrink);
+            img = itemView.findViewById(R.id.imgOrder);
             tvName = itemView.findViewById(R.id.tvName);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             itemView.setOnClickListener(view -> {
