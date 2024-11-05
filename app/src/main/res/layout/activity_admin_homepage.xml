@@ -5,15 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Homepage.AdminHomepageActivity"
-    android:orientation="vertical"
-    android:gravity="center"
     android:layout_margin="10dp"
-    >
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context=".Homepage.AdminHomepageActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.75"
         android:gravity="top"
         android:orientation="horizontal"
         android:weightSum="2">
@@ -41,7 +41,7 @@
                 android:id="@+id/btnProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View Profile" />>
+                android:text="View Profile" />
         </LinearLayout>
     </LinearLayout>
 
@@ -49,101 +49,102 @@
     <TextView
 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.75"
+        android:gravity="center"
         android:text="Dashboard"
-        android:gravity="center"
         android:textSize="30dp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7.75"
         android:orientation="vertical"
-        android:gravity="center"
-        android:id="@+id/lnFood"
-
-        >
-        <ImageView
-
-            android:src="@drawable/baseline_fastfood_24"
-            android:id="@+id/ivItem1"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Foods"
-            android:textSize="24dp"
-            android:gravity="center"/>
-    </LinearLayout>
+        android:gravity="center">
         <LinearLayout
+            android:id="@+id/lnFood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center"
-            android:id="@+id/lnDrink"
+            android:orientation="vertical"
+
             >
 
             <ImageView
-                android:src="@drawable/baseline_coffee_24"
-                android:id="@+id/ivItem2"
 
+                android:id="@+id/ivItem1"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                />
+                android:src="@drawable/baseline_fastfood_24" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Drinks"
-                android:textSize="24dp"
-                android:gravity="center"/>
-        </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center"
-                android:id="@+id/lnDessert"
+                android:text="Foods"
+                android:textSize="24dp" />
+        </LinearLayout>
 
-                >
+        <LinearLayout
+            android:id="@+id/lnDrink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
-                <ImageView
-                    android:src="@drawable/baseline_cake_24"
-                    android:id="@+id/ivItem3"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Dessert"
-                    android:textSize="24dp"
-                    android:gravity="center"/>
+            <ImageView
+                android:id="@+id/ivItem2"
+                android:layout_width="150dp"
 
-            </LinearLayout>
+                android:layout_height="150dp"
+                android:src="@drawable/baseline_coffee_24" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Drinks"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnDessert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivItem3"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/baseline_cake_24" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Dessert"
+                android:textSize="24dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
         android:id="@+id/lnCart"
-
-        >
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="0.75">
 
         <ImageView
             android:id="@+id/ivItem4"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/baseline_shopping_cart_24" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Orders"
-            android:textSize="24dp"
-            android:gravity="center"/>
-
     </LinearLayout>
 
 </LinearLayout>
